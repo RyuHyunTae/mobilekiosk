@@ -3,8 +3,7 @@
     <%@page import="com.mo.biz.menu.menuVO" %>
     <%
     menuVO menuDetail = (menuVO) request.getAttribute("menuDetail");
-    String supplier_business_number = (String) session.getAttribute("supplier_business_number");
-	String supplier_name = (String) session.getAttribute("supplier_name");
+    String businessNum = (String) session.getAttribute("businessNum");
 %>
 <!DOCTYPE html>
 <html>
@@ -18,7 +17,7 @@
 	<textarea rows="30" cols="30" name="menuDescription"><%=menuDetail.getMenuDescription() %></textarea>
 	<input type="text" name="menuPrice" value="<%=menuDetail.getMenuPrice()%>">
 	<input type="hidden" name="menuPicture" value="1">
-	<input type="hidden" name="busniessNum" value="1">
+	<input type="hidden" name="businessNum" value="<%=businessNum%>">
 	<input type="hidden" name="menuNum" value="<%=menuDetail.getMenuNum()%>">
 	<input type="submit" value="¼öÁ¤">
 	</form>

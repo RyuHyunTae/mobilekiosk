@@ -20,6 +20,12 @@
 		WHERE menuNum=#{menuNum}
 	</update>
 	
+	<delete id="delete" parameterType="menuVO">
+		DELETE
+		FROM menu
+		WHERE menuNum=#{menuNum}
+	</delete>
+	
 	<select id="list" resultType="menuVO">
 		SELECT *
 		FROM menu

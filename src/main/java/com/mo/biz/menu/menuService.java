@@ -26,4 +26,8 @@ public class menuService {
 	public List<menuVO> menuList(menuVO vo){
 		return menuDAO.menuList(vo);
 	}
+	
+	public int menuDelete(menuVO vo) {
+		return menuDAO.menuDelete(vo);
+	}
 }

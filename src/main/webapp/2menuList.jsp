@@ -17,7 +17,7 @@
 <body>
 	<a href="http://localhost:8080/biz/2menuInsert.jsp">메뉴등록</a><br>
 	<%for(menuVO list:menuList){ %>
-	<%=list.getMenuName() %>
+	<a href="http://localhost:8080/biz/menu/detail.do?menuNum=<%=list.getMenuNum()%>"><%=list.getMenuName() %></a>
 	<br>
 	<%} %>
 </body>
