@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ 	<typeAliases>
+ 		<!-- <typeAlias alias="sample" type="com.jh.biz.sample.SampleVO"></typeAlias> -->
+ 		<typeAlias alias="shopVO" type="com.mo.biz.shop.shopVO"/>
+ 		<typeAlias alias="menuVO" type="com.mo.biz.menu.menuVO"/>
+ 		
+    </typeAliases>
+ 
+ 	<mappers>
+ 		<!-- <mapper resource="mappings/sample-mapper.xml"></mapper> -->
+		<mapper resource="mappings/shop-mapping.xml"/>
+		<mapper resource="mappings/menu-mapping.xml"/>
+		
+ 	</mappers>
+</configuration>

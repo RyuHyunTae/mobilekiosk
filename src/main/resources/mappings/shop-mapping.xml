@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.rog/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shopDAO">
+	<insert id="join"  parameterType="shopVO">
+		INSERT
+		INTO shop(businessNum,password,approval)
+		VALUES (#{businessNum},#{password},0)
+	</insert>
+	
+	<select id="login" resultType="shopVO">
+		SELECT *
+		FROM shop
+		WHERE businessNum=#{businessNum} AND password=#{password}
+	</select>
+</mapper>
