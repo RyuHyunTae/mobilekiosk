@@ -14,4 +14,5 @@ public class menuVO {
 	String menuPicture;
 	String businessNum;
 	
+	
 }

@@ -7,6 +7,8 @@
  		<!-- <typeAlias alias="sample" type="com.jh.biz.sample.SampleVO"></typeAlias> -->
  		<typeAlias alias="shopVO" type="com.mo.biz.shop.shopVO"/>
  		<typeAlias alias="menuVO" type="com.mo.biz.menu.menuVO"/>
+ 		<typeAlias alias="userVO" type="com.mo.biz.user.userVO"/>
+ 		<typeAlias alias="usershopVO" type="com.mo.biz.user.usershopVO"/>
  		
     </typeAliases>
  
@@ -14,6 +16,7 @@
  		<!-- <mapper resource="mappings/sample-mapper.xml"></mapper> -->
 		<mapper resource="mappings/shop-mapping.xml"/>
 		<mapper resource="mappings/menu-mapping.xml"/>
+		<mapper resource="mappings/user-mapping.xml"/>
 		
  	</mappers>
 </configuration>
