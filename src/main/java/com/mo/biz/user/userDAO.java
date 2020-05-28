@@ -33,4 +33,41 @@ public class userDAO {
 	public List<usershopVO> shopList(usershopVO vo){
 		return sqlSession.selectList("userDAO.shopList",vo);
 	}
+	
+	public int basketInsert(basketVO vo) {
+		return sqlSession.insert("userDAO.basketInsert",vo);
+	}
+	
+	public int basketCountUp(basketVO vo) {
+		return sqlSession.update("userDAO.basketCountUp",vo);
+	}
+	
+	public int basketCountDown(basketVO vo) {
+		return sqlSession.update("userDAO.basketCountDown",vo);
+	}
+	
+	public int basketDelete(basketVO vo) {
+		return sqlSession.delete("userDAO.basketDelete",vo);
+	}
+	
+	public basketVO basketCheck(basketVO vo) {
+		return sqlSession.selectOne("userDAO.basketCheck",vo);
+	}
+	
+	public List<basketVO> basketList(basketVO vo){
+		return sqlSession.selectList("userDAO.basketList",vo);
+	}
+	
+	public int basketAllDelete(String id) {
+		return sqlSession.delete("userDAO.basketAllDelete",id);
+	}
+	
+	public int menuhitsInsert(menuhitsVO vo) {
+		return sqlSession.insert("userDAO.menuhitsInsert",vo);
+	}
+	
+	public List<menuhitsVO> getMenuhits(String businessNum){
+		return sqlSession.selectList("userDAO.getMenuhits",businessNum);
+	}
+	
 }

@@ -4,8 +4,8 @@
 <mapper namespace="menuDAO">
 	<insert id="insert"  parameterType="menuVO">
 		INSERT
-		INTO menu(menuName,menuDescription,menuPrice,menuPicture,businessNum)
-		VALUES (#{menuName},#{menuDescription},#{menuPrice},#{menuPicture},#{businessNum})
+		INTO menu(menuName,menuDescription,menuPrice,menuPicture,menuCategory,businessNum)
+		VALUES (#{menuName},#{menuDescription},#{menuPrice},#{menuPicture},#{menuCategory},#{businessNum})
 	</insert>
 	
 	<select id="detail" resultType="menuVO">
@@ -16,7 +16,7 @@
 	
 	<update id="update" parameterType="menuVO">
 		UPDATE menu
-		SET menuName =#{menuName},menuDescription=#{menuDescription},menuPrice = #{menuPrice},menuPicture = #{menuPicture},businessNum=#{businessNum} 
+		SET menuName =#{menuName},menuDescription=#{menuDescription},menuPrice = #{menuPrice},menuPicture = #{menuPicture},menuCategory=#{menuCategory},businessNum=#{businessNum} 
 		WHERE menuNum=#{menuNum}
 	</update>
 	
@@ -31,4 +31,6 @@
 		FROM menu
 		WHERE businessNum=#{businessNum}
 	</select>
+	
+	
 </mapper>

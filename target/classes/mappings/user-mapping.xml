@@ -31,4 +31,59 @@
 		FROM shop a , usershop b
 		WHERE a.businessNum=b.businessNum AND b.id=#{id}
 	</select>
+	
+	<insert id="basketInsert"  parameterType="basketVO">
+		INSERT
+		INTO basket(basketCount,id,menuNum)
+		VALUES(1,#{id},#{menuNum})
+	</insert>
+	
+	<update id="basketCountUp" parameterType="basketVO">
+		UPDATE basket
+		SET basketCount= basketCount +1
+		WHERE basketNum=#{basketNum}
+	</update>
+	
+	<update id="basketCountDown" parameterType="basketVO">
+		UPDATE basket
+		SET basketCount= basketCount -1
+		WHERE basketNum=#{basketNum}
+	</update>
+	
+	<delete id="basketDelete" parameterType="basketVO">
+		DELETE
+		FROM basket
+		WHERE basketNum=#{basketNum}
+	</delete>
+	
+	<select id="basketCheck" resultType="basketVO">
+		SELECT *
+		FROM basket
+		WHERE id=#{id} AND menuNum=#{menuNum}
+	</select>
+	
+	<select id="basketList" resultType="basketVO">
+		SELECT *
+		FROM basket a , menu b
+		WHERE a.menuNum=b.menuNum AND a.id=#{id}
+	</select>
+	
+	<delete id="basketAllDelete" parameterType="String">
+		DELETE
+		FROM basket
+		WHERE id=#{id}
+	</delete>
+	
+	<insert id="menuhitsInsert" parameterType="menuhitsVO">
+		INSERT
+		INTO menuhits(hitsTime,businessNum,menuNum)
+		VALUES (#{hitsTime},#{businessNum},#{menuNum})
+	</insert>
+	
+	<select id="getMenuhits" parameterType="String" resultType="menuhitsVO">
+		SELECT *
+		FROM menuhits a , menu b
+		WHERE a.menuNum=b.menuNum AND a.businessNum=#{businessNum}
+	</select>
+	
 </mapper>

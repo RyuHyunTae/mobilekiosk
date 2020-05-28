@@ -1,19 +1,21 @@
-package com.mo.biz.menu;
+package com.mo.biz.user;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter@Setter@ToString
-public class menuVO {
-	
+public class basketVO {
+
+	int basketNum;
+	int basketCount;
+	String id;
 	int menuNum;
+	
 	String menuName;
 	String menuDescription;
 	int menuPrice;
 	String menuPicture;
-	String menuCategory;
 	String businessNum;
-	
 	
 }

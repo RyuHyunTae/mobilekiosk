@@ -9,6 +9,10 @@
  		<typeAlias alias="menuVO" type="com.mo.biz.menu.menuVO"/>
  		<typeAlias alias="userVO" type="com.mo.biz.user.userVO"/>
  		<typeAlias alias="usershopVO" type="com.mo.biz.user.usershopVO"/>
+ 		<typeAlias alias="basketVO" type="com.mo.biz.user.basketVO"/>
+ 		<typeAlias alias="menuhitsVO" type="com.mo.biz.user.menuhitsVO"/>
+ 		<typeAlias alias="orderVO" type="com.mo.biz.order.orderVO"/>
+ 		<typeAlias alias="orderListVO" type="com.mo.biz.order.orderListVO"/>
  		
     </typeAliases>
  
@@ -17,6 +21,7 @@
 		<mapper resource="mappings/shop-mapping.xml"/>
 		<mapper resource="mappings/menu-mapping.xml"/>
 		<mapper resource="mappings/user-mapping.xml"/>
+		<mapper resource="mappings/order-mapping.xml"/>
 		
  	</mappers>
 </configuration>

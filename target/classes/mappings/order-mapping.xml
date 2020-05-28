@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.rog/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orderDAO">
+	<insert id="orderInsert"  parameterType="orderVO">
+		INSERT
+		INTO orders(orderTime,orderRequest,orderState,orderTotalPrice,id)
+		VALUES (#{orderTime},#{orderRequest},"접수완료",#{orderTotalPrice},#{id})
+	</insert>
+	
+	<insert id="orderDetailInsert"  parameterType="orderVO">
+		INSERT
+		INTO orderdetail(detailCount,orderNum,menuNum)
+		VALUES (#{detailCount},#{orderNum},#{menuNum})
+	</insert>
+	
+	<select id="getOrderNum" resultType="orderVO">
+		SELECT *
+		FROM orders
+		WHERE orderTime=#{orderTime} AND id=#{id}
+	</select>
+	
+	<select id="userOrderList" resultType="orderListVO">
+		SELECT *
+		FROM orders a , orderdetail b , menu c , shop d
+		WHERE a.orderNum=b.orderNum AND b.menuNum=c.menuNum AND c.businessNum=d.businessNum AND a.id=#{id}
+		ORDER BY a.orderTime DESC
+	</select>
+	
+</mapper>

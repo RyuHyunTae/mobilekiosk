@@ -15,6 +15,7 @@
 	<textarea rows="30" cols="30" name="menuDescription"></textarea>
 	<input type="text" name="menuPrice">
 	<input type="hidden" name="menuPicture" value="1">
+	<input type="text" name="menuCategory">
 	<input type="hidden" name="businessNum" value="<%=businessNum%>">
 	<input type="submit" value="µî·Ï">
 	</form>

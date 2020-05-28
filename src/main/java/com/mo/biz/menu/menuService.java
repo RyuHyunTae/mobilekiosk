@@ -30,4 +30,8 @@ public class menuService {
 	public int menuDelete(menuVO vo) {
 		return menuDAO.menuDelete(vo);
 	}
+	
+	public List<menuVO> menuDetail2(menuVO vo){
+		return menuDAO.menuDetail2(vo);
+	}
 }
