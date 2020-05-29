@@ -18,6 +18,7 @@ import com.mo.biz.menu.menuVO;
 import com.mo.biz.shop.shopVO;
 import com.mo.biz.user.basketVO;
 import com.mo.biz.user.menuhitsVO;
+import com.mo.biz.user.preOrderVO;
 import com.mo.biz.user.userService;
 import com.mo.biz.user.userVO;
 import com.mo.biz.user.usershopVO;
@@ -115,6 +116,87 @@ public class userController {
 	@PostMapping(value = "menuhits.do")
 	List<menuhitsVO> menuhits(@RequestBody menuhitsVO vo) {
 		System.out.println("메뉴조회목록");
-		return  userService.getMenuhits(vo.getBusinessNum());
+		return userService.getMenuhits(vo.getBusinessNum());
+	}
+
+	@PostMapping(value = "preMenuList.do")
+	List<preOrderVO> preOrderList(@RequestBody preOrderVO vo) {
+		System.out.println("전날주문목록");
+		List<preOrderVO> list = new ArrayList();
+		list = userService.getPreOrder(vo.getBusinessNum());
+
+		JSONArray jArrObject = new JSONArray(list);
+		int list_count = jArrObject.length();
+		String[] orderTime = new String[list_count];
+		String[] businessNum = new String[list_count];
+		int[] menuNum = new int[list_count];
+		int[] orderCountNum = new int[list_count];
+		int[] orderCount = new int[list_count];
+
+		int count = 0;
+		String yesterDay;
+		String getDay;
+
+		ArrayList<Integer> arrayList = new ArrayList<Integer>();
+
+		Date dDate = new Date();
+		dDate = new Date(dDate.getTime() + (1000 * 60 * 60 * 24 * -1));
+		SimpleDateFormat dSdf = new SimpleDateFormat("yyyy-MM-dd");
+		String time1 = dSdf.format(dDate);
+		yesterDay = time1.substring(0, 10);
+		for (int i = 0; i < list_count; i++) {
+			JSONObject jsonObject = jArrObject.getJSONObject(i);
+			orderTime[i] = jsonObject.getString("orderTime");
+			businessNum[i] = jsonObject.getString("businessNum");
+			menuNum[i] = jsonObject.getInt("menuNum");
+			getDay = orderTime[i].substring(0, 10);
+			if (yesterDay.equals(getDay)) {
+				for (int a = 0; a < count + 1; a++) {
+					if (orderCountNum[a] == menuNum[i]) {
+						orderCount[a]++;
+						break;
+					} else {
+						if (a == count) {
+							orderCountNum[count] = menuNum[i];
+							orderCount[count] = 1;
+							count++;
+							break;
+						}
+					}
+				}
+			}
+		}
+		int empty;
+
+		for (int i = 0; i < count; i++) {
+			for (int j = 0; j < count - i - 1; j++) {
+				if (orderCount[j] < orderCount[j + 1]) {
+					// 주문횟수정렬
+					empty = orderCount[j];
+					orderCount[j] = orderCount[j + 1];
+					orderCount[j + 1] = empty;
+
+					// 메뉴번호정렬
+					empty = orderCountNum[j];
+					orderCountNum[j] = orderCountNum[j + 1];
+					orderCountNum[j + 1] = empty;
+
+				}
+			}
+		}
+		
+		
+		List<preOrderVO> jsonList = new ArrayList();
+		int max=3;
+		if(max>count) {
+			max=count;
+		}
+		for (int a = 0; a < max; a++) {
+			preOrderVO json = new preOrderVO();
+			json.setMenuNum(orderCountNum[a]);
+			json.setRank(a+1);
+			jsonList.add(json);
+		}
+		return jsonList;
 	}
 }

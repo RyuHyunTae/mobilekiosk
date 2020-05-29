@@ -11,6 +11,7 @@
  		<typeAlias alias="usershopVO" type="com.mo.biz.user.usershopVO"/>
  		<typeAlias alias="basketVO" type="com.mo.biz.user.basketVO"/>
  		<typeAlias alias="menuhitsVO" type="com.mo.biz.user.menuhitsVO"/>
+ 		<typeAlias alias="preOrderVO" type="com.mo.biz.user.preOrderVO"/>
  		<typeAlias alias="orderVO" type="com.mo.biz.order.orderVO"/>
  		<typeAlias alias="orderListVO" type="com.mo.biz.order.orderListVO"/>
  		

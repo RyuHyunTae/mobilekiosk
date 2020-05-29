@@ -86,4 +86,11 @@
 		WHERE a.menuNum=b.menuNum AND a.businessNum=#{businessNum}
 	</select>
 	
+	<select id="getPreOrder" parameterType="String" resultType="preOrderVO">
+		SELECT a.orderTime,b.menuNum,c.businessNum
+		FROM orders a , orderdetail b , menu c
+		WHERE a.orderNum=b.orderNum AND b.menuNum = c.menuNum AND c.businessNum=#{businessNum}
+	</select>
+	
+	
 </mapper>

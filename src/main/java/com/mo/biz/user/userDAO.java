@@ -70,4 +70,7 @@ public class userDAO {
 		return sqlSession.selectList("userDAO.getMenuhits",businessNum);
 	}
 	
+	public List<preOrderVO> getPreOrder(String businessNum){
+		return sqlSession.selectList("userDAO.getPreOrder",businessNum);
+	}
 }

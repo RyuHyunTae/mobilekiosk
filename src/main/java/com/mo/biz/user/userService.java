@@ -69,4 +69,8 @@ public class userService {
 	public List<menuhitsVO> getMenuhits(String businessNum){
 		return userDAO.getMenuhits(businessNum);
 	}
+	
+	public List<preOrderVO> getPreOrder(String businessNum){
+		return userDAO.getPreOrder(businessNum);
+	}
 }
