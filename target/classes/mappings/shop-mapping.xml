@@ -4,8 +4,8 @@
 <mapper namespace="shopDAO">
 	<insert id="join"  parameterType="shopVO">
 		INSERT
-		INTO shop(businessNum,password,approval)
-		VALUES (#{businessNum},#{password},0)
+		INTO shop(businessNum,password,approval,name,shopName,shopAddress,shopTime)
+		VALUES (#{businessNum},#{password},2,#{name},#{shopName},#{shopAddress},#{shopTime})
 	</insert>
 	
 	<select id="login" resultType="shopVO">
@@ -13,4 +13,41 @@
 		FROM shop
 		WHERE businessNum=#{businessNum} AND password=#{password}
 	</select>
+	
+	<select id="todayCalculateList" resultType="calculateVO">
+		SELECT *
+		FROM orders
+		WHERE businessNum=#{businessNum} AND orderTime LIKE CONCAT('%',#{orderTime},'%')
+	</select>
+	
+	<select id="preCalculateList" resultType="calculateVO">
+		SELECT *
+		FROM orders
+		WHERE businessNum=#{businessNum} AND orderTime LIKE CONCAT('%',#{orderTime},'%')
+	</select>
+	
+	<select id="approvalList" resultType="shopVO">
+		SELECT *
+		FROM shop
+		WHERE approval=2
+	</select>
+	
+	<select id="approvalDetail" resultType="shopVO">
+		SELECT *
+		FROM shop
+		WHERE businessNum=#{businessNum}
+	</select>
+	
+	<update id="qrcodeInsert" parameterType="shopVO">
+		UPDATE shop
+		SET QRcode=#{QRcode},QRpicture=#{QRpicture},approval=1
+		WHERE businessNum=#{businessNum}
+	</update>
+	
+	<select id="getQRcode" parameterType="String" resultType="shopVO">
+		SELECT *
+		FROM shop
+		WHERE businessNum=#{businessNum}
+	</select>
+	
 </mapper>

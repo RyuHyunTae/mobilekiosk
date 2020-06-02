@@ -4,8 +4,8 @@
 <mapper namespace="orderDAO">
 	<insert id="orderInsert"  parameterType="orderVO">
 		INSERT
-		INTO orders(orderTime,orderRequest,orderState,orderTotalPrice,id)
-		VALUES (#{orderTime},#{orderRequest},"접수완료",#{orderTotalPrice},#{id})
+		INTO orders(orderTime,orderRequest,orderState,orderTotalPrice,id,businessNum)
+		VALUES (#{orderTime},#{orderRequest},"접수완료",#{orderTotalPrice},#{id},#{businessNum})
 	</insert>
 	
 	<insert id="orderDetailInsert"  parameterType="orderVO">
@@ -24,6 +24,13 @@
 		SELECT *
 		FROM orders a , orderdetail b , menu c , shop d
 		WHERE a.orderNum=b.orderNum AND b.menuNum=c.menuNum AND c.businessNum=d.businessNum AND a.id=#{id}
+		ORDER BY a.orderTime DESC
+	</select>
+	
+	<select id="shopOrderList" resultType="orderListVO">
+		SELECT *
+		FROM orders a , orderdetail b , menu c , shop d
+		WHERE a.orderNum=b.orderNum AND b.menuNum=c.menuNum AND c.businessNum=d.businessNum AND d.businessNum=#{businessNum} 
 		ORDER BY a.orderTime DESC
 	</select>
 	

@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mo.biz.menu.menuService;
 import com.mo.biz.menu.menuVO;
+import com.mo.biz.shop.shopService;
+import com.mo.biz.shop.shopVO;
 
 @Controller
 @RequestMapping(value="menu")
@@ -16,6 +18,9 @@ public class menuController {
 	
 	@Autowired
 	menuService menuService;
+	
+	@Autowired
+	shopService shopService;
 	
 	
 	@PostMapping(value="insert.do")
@@ -44,6 +49,9 @@ public class menuController {
 	@RequestMapping(value="list.do")
 	public ModelAndView menuList(ModelAndView mav,menuVO vo) {
 		System.out.println("메뉴리스트화면");
+		shopVO qr = new shopVO();
+		qr=shopService.getQRcode(vo.getBusinessNum());
+		mav.addObject("qrcode",qr.getQRpicture());
 		mav.addObject("menuList",menuService.menuList(vo));
 		mav.setViewName("../2menuList.jsp");
 		return mav;

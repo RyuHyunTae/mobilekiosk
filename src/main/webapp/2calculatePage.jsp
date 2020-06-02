@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@page import="java.util.List"%>
+<%@page import="com.mo.biz.shop.calculateVO"%>
 <%
+	List<calculateVO> todayCalculate = (List) request.getAttribute("todayCalculate");
 	String businessNum = (String) session.getAttribute("businessNum");
-	String url = (String) request.getAttribute("url");
+	int all=0;
 %>
 <link href="http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -26,8 +29,8 @@
 </style>
 
 <body style="margin: 50px 300px">
-
-<nav>
+	<div>
+		<nav>
 	<div style="text-align: left;"><form action="http://192.168.64.157:8080/biz/shop/main.do" method="post">
 		<input type="hidden" name="businessNum" value="<%=businessNum%>">
 		<input type="submit" value="HOME" class="btn btn-outline-secondary">
@@ -40,44 +43,41 @@
 		<a href="http://192.168.64.157:8080/biz/shop/logout.do">로그아웃</a>
 		</div>
 	</nav>
+		<div>
+			<form action="http://192.168.64.157:8080/biz/shop/preCalculate.do"
+				method="get">
+				<input type="text" name="orderTime" placeholder="0000-00"> <input
+					type="hidden" name="businessNum" value="<%=businessNum%>">
+				<input type="submit" value="검색" class="btn btn-outline-secondary">
+			</form>
+		</div>
+	</div>
+	<div>
+		<table style="font-family: 'Nanum Brush Script', cursive;">
+			<tr>
+				<td>주문번호</td>
+				<td>주문시간</td>
+				<td>주문자 ID</td>
+				<td>총 가격</td>
+			</tr>
+			<%
+				for (calculateVO today : todayCalculate) {
+			%>
+			<tr>
+				<td><%=today.getOrderNum()%></td>
+				<td><%=today.getOrderTime()%></td>
+				<td><%=today.getId()%></td>
+				<td><%=today.getOrderTotalPrice()%></td>
+			</tr>
 
-	<table style="font-family: 'Nanum Brush Script', cursive;">
-		<form action="upload.do" method="post" enctype="multipart/form-data">
-			<tr>
-				<td>사진</td>
-				<td><input type="file" name="file1" class="btn btn-outline-secondary"></td>
-				<td><input type="submit" value="사진등록"
-					class="btn btn-outline-secondary"></td>
+			<%
+				all = all + today.getOrderTotalPrice();
+				}
+			%><tr>
+				<td colspan="3" style="text-align: right;">총 금액 :</td>
+				<td><%=all%></td>
 			</tr>
-		</form>
-
-		<form action="http://192.168.64.157:8080/biz/menu/insert.do" method="post">
-			<tr>
-				<td>메뉴명</td>
-				<td><input type="text" name="menuName"></td>
-			</tr>
-			<tr>
-				<td>메뉴설명</td>
-				<td><textarea rows="30" cols="30" name="menuDescription"></textarea></td>
-			</tr>
-			<tr>
-				<td>메뉴가격</td>
-				<td><input type="text" name="menuPrice"></td>
-			</tr>
-			<tr>
-				<td>메뉴사진</td>
-				<td><%=url%><input type="hidden" name="menuPicture" value="<%=url%>"></td>
-			</tr>
-			<tr>
-				<td>메뉴카테고리</td>
-				<td><input type="text" name="menuCategory"></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="businessNum"
-					value="<%=businessNum%>"></td>
-				<td><input type="submit" value="등록" class="btn btn-outline-secondary"></td>
-			</tr>
-		</form>
-	</table>
+		</table>
+	</div>
 </body>
 </html>

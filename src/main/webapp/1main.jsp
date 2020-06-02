@@ -9,7 +9,6 @@
 <body>
 	<ul>
 		<li>가입신청목록</li>
-		<li>정산</li>
 	</ul>
 </body>
 </html>

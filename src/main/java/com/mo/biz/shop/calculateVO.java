@@ -1,24 +1,24 @@
-package com.mo.biz.order;
+package com.mo.biz.shop;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter@Setter@ToString
-public class orderVO {
+public class calculateVO {
 
 	int orderNum;
 	String orderTime;
 	String orderRequest;
 	String orderState;
 	int orderTotalPrice;
-	String businessNum;
 	String id;
 	
 	int detailNum;
 	int detailCount;
 	int menuNum;
 	
+	String businessNum;
 	
 	
 }

@@ -6,6 +6,7 @@
  	<typeAliases>
  		<!-- <typeAlias alias="sample" type="com.jh.biz.sample.SampleVO"></typeAlias> -->
  		<typeAlias alias="shopVO" type="com.mo.biz.shop.shopVO"/>
+ 		<typeAlias alias="calculateVO" type="com.mo.biz.shop.calculateVO"/>
  		<typeAlias alias="menuVO" type="com.mo.biz.menu.menuVO"/>
  		<typeAlias alias="userVO" type="com.mo.biz.user.userVO"/>
  		<typeAlias alias="usershopVO" type="com.mo.biz.user.usershopVO"/>

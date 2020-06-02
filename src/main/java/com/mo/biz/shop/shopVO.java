@@ -13,6 +13,7 @@ public class shopVO {
 	String shopAddress;
 	String shopTime;
 	String QRcode;
+	String QRpicture;
 	int approval;
 	
 }
