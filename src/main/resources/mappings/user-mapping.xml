@@ -20,6 +20,12 @@
 		VALUES (#{id},#{businessNum})
 	</insert>
 	
+	<select id="checkUserShop" resultType="usershopVO">
+		SELECT *
+		FROM usershop
+		WHERE id=#{id} AND businessNum=#{businessNum}
+	</select>
+	
 	<select id="getBusinessNum" resultType="shopVO">
 		SELECT *
 		FROM shop

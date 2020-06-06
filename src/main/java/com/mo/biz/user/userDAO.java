@@ -26,6 +26,10 @@ public class userDAO {
 		return sqlSession.insert("userDAO.usershopInsert",vo);
 	}
 	
+	public usershopVO checkUserShop(usershopVO vo) {
+		return sqlSession.selectOne("userDAO.checkUserShop",vo);
+	}
+	
 	public shopVO getBusinessNum(shopVO vo) {
 		return sqlSession.selectOne("userDAO.getBusinessNum",vo);
 	}

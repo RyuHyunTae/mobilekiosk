@@ -35,4 +35,12 @@ public class menuDAO {
 	public List<menuVO> menuDetail2(menuVO vo) {
 		return sqlSession.selectList("menuDAO.detail",vo);
 	}
+	
+	public int menuBasketDelete(int menuNum) {
+		return sqlSession.delete("menuDAO.menuBasketDelete",menuNum);
+	}
+	
+	public int menuMenuhitsDelete(int menuNum) {
+		return sqlSession.delete("menuDAO.menuMenuhitsDelete",menuNum);
+	}
 }

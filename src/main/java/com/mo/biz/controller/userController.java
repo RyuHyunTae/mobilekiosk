@@ -46,7 +46,15 @@ public class userController {
 		sVO.setQRcode(vo.getQRcode());
 		sVO = userService.getBusinessNum(sVO);
 		vo.setBusinessNum(sVO.getBusinessNum());
-		return userService.usershopInsert(vo);
+		usershopVO usVO = new usershopVO();
+		usVO.setBusinessNum(vo.getBusinessNum());
+		usVO.setId(vo.getId());
+		if(userService.checkUserShop(usVO)==null) {
+			return userService.usershopInsert(vo);
+		}
+		else{
+			return 0;
+		}
 	}
 
 	@PostMapping(value = "shopList.do")

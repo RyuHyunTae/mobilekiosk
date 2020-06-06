@@ -26,6 +26,10 @@ public class userService {
 		return userDAO.usershopInsert(vo);
 	}
 	
+	public usershopVO checkUserShop(usershopVO vo) {
+		return userDAO.checkUserShop(vo);
+	}
+	
 	public shopVO getBusinessNum(shopVO vo) {
 		return userDAO.getBusinessNum(vo);
 	}

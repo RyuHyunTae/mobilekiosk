@@ -69,6 +69,8 @@ public class menuController {
 	@GetMapping(value="delete.do")
 	public String menuDelete(menuVO vo) {
 		System.out.println("메뉴삭제");
+		menuService.menuBasketDelete(vo.getMenuNum());
+		menuService.menuMenuhitsDelete(vo.getMenuNum());
 		menuService.menuDelete(vo);
 		return "list.do";
 	}

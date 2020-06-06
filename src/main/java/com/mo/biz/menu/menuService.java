@@ -34,4 +34,12 @@ public class menuService {
 	public List<menuVO> menuDetail2(menuVO vo){
 		return menuDAO.menuDetail2(vo);
 	}
+	
+	public int menuBasketDelete(int menuNum) {
+		return menuDAO.menuBasketDelete(menuNum);
+	}
+	
+	public int menuMenuhitsDelete(int menuNum) {
+		return menuDAO.menuMenuhitsDelete(menuNum);
+	}
 }

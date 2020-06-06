@@ -16,7 +16,7 @@
 	
 	<update id="update" parameterType="menuVO">
 		UPDATE menu
-		SET menuName =#{menuName},menuDescription=#{menuDescription},menuPrice = #{menuPrice},menuPicture = #{menuPicture},menuCategory=#{menuCategory},businessNum=#{businessNum} 
+		SET menuName =#{menuName},menuDescription=#{menuDescription},menuPrice = #{menuPrice},menuCategory=#{menuCategory},businessNum=#{businessNum} 
 		WHERE menuNum=#{menuNum}
 	</update>
 	
@@ -31,6 +31,18 @@
 		FROM menu
 		WHERE businessNum=#{businessNum}
 	</select>
+	
+	<delete id="menuBasketDelete" parameterType="int">
+		DELETE
+		FROM basket
+		WHERE menuNum=#{menuNum}
+	</delete>
+	
+	<delete id="menuMenuhitsDelete" parameterType="int">
+		DELETE
+		FROM menuhits
+		WHERE menuNum=#{menuNum}
+	</delete>
 	
 	
 </mapper>
