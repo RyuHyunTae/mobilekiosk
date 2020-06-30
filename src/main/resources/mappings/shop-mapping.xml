@@ -40,11 +40,29 @@
 	
 	<update id="qrcodeInsert" parameterType="shopVO">
 		UPDATE shop
-		SET QRcode=#{QRcode},QRpicture=#{QRpicture},approval=1
+		SET QRcode=#{QRcode},QRpicture=#{QRpicture},approval=1,shopOpen=2
 		WHERE businessNum=#{businessNum}
 	</update>
 	
 	<select id="getQRcode" parameterType="String" resultType="shopVO">
+		SELECT *
+		FROM shop
+		WHERE businessNum=#{businessNum}
+	</select>
+	
+	<update id="shopOpen" parameterType="String">
+		UPDATE shop
+		SET shopOpen=1
+		WHERE businessNum=#{businessNum}
+	</update>
+	
+	<update id="shopClose" parameterType="String">
+		UPDATE shop
+		SET shopOpen=2
+		WHERE businessNum=#{businessNum}
+	</update>
+	
+	<select id="shopState" parameterType="String" resultType="shopVO">
 		SELECT *
 		FROM shop
 		WHERE businessNum=#{businessNum}

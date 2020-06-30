@@ -18,4 +18,5 @@ public class usershopVO {
 	String shopTime;
 	String QRcode;
 	int approval;
+	int shopOpen;
 }

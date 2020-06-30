@@ -38,6 +38,12 @@ public class userController {
 		System.out.println("로그인");
 		return userService.login(vo);
 	}
+	
+	@PostMapping(value = "join.do")
+	int join(@RequestBody userVO vo) {
+		System.out.println("회원가입");
+		return userService.join(vo);
+	}
 
 	@PostMapping(value = "shopInsert.do")
 	int shopInsert(@RequestBody usershopVO vo) {

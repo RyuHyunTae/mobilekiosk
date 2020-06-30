@@ -19,6 +19,10 @@
 <title>Insert title here</title>
 </head>
 
+<script type="text/javascript">
+	window.setTimeout('window.location.reload()',5000);
+</script>
+
 <style>
   table {
     width: 100%;
@@ -48,11 +52,12 @@
 			<a href="http://192.168.64.157:8080/biz/shop/logout.do">로그아웃</a>
 		</div>
 	</nav>
-	<form action="http://192.168.64.157:8080/biz/shop/mainStart.do"
-		method="post">
-		<input type="hidden" name="businessNum" value="<%=businessNum%>">
-		<input type="submit" value="시작" class="btn btn-outline-secondary">
-	</form>
+
+	<form action="http://192.168.64.157:8080/biz/shop/mainClose.do"
+				method="post">
+				<input type="hidden" name="businessNum" value="<%=businessNum%>">
+				<input type="submit" value="종료" class="btn btn-outline-secondary">
+			</form>
 	<table style="font-family: 'Nanum Brush Script', cursive; font-size: 20px;">
 		<tr>
 			<td style="width: 100px;">주문 번호</td>
@@ -71,8 +76,8 @@
 		<tr>
 			<td><%=data.get(i).getOrderNum()%></td>
 			<td><%=data.get(i).getMenuName()%></td>
-			<td><%=data.get(i).getOrderRequest()%></td>
-			<td><%=data.get(i).getOrderTime()%></td>
+			<td><%=data.get(i).getOrderRequest() %></td>
+			<td><%=data.get(i).getOrderTime() %></td>
 			<td><form action="http://192.168.64.157:8080/biz/shop/orderApproval.do" method="post">
 					<input type="hidden" name="businessNum" value="<%=businessNum%>">
 					<input type="hidden" name="orderNum" value="<%=data.get(i).getOrderNum()%>">
@@ -101,9 +106,9 @@
 		<%
 			} else {
 		%>
-	</table>
-	<br>
-	<table style="font-family: 'Nanum Brush Script', cursive; font-size: 20px;">
+		</table>
+		<br>
+		<table style="font-family: 'Nanum Brush Script', cursive; font-size: 20px;">
 		<tr>
 			<td style="width: 100px;">주문 번호</td>
 			<td style="width: 2500px;">메뉴 명</td>
@@ -115,8 +120,8 @@
 		<tr>
 			<td><%=data.get(i).getOrderNum()%></td>
 			<td><%=data.get(i).getMenuName()%></td>
-			<td><%=data.get(i).getOrderRequest()%></td>
-			<td><%=data.get(i).getOrderTime()%></td>
+			<td><%=data.get(i).getOrderRequest() %></td>
+			<td><%=data.get(i).getOrderTime() %></td>
 			<td><form action="http://192.168.64.157:8080/biz/shop/orderApproval.do" method="post">
 					<input type="hidden" name="businessNum" value="<%=businessNum%>">
 					<input type="hidden" name="orderNum" value="<%=data.get(i).getOrderNum()%>">
@@ -138,6 +143,7 @@
 			}
 		%>
 	</table>
-
+	
+	
 </body>
 </html>

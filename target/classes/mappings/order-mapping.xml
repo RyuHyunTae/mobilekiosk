@@ -30,8 +30,24 @@
 	<select id="shopOrderList" resultType="orderListVO">
 		SELECT *
 		FROM orders a , orderdetail b , menu c , shop d
-		WHERE a.orderNum=b.orderNum AND b.menuNum=c.menuNum AND c.businessNum=d.businessNum AND d.businessNum=#{businessNum} 
+		WHERE a.orderNum=b.orderNum AND b.menuNum=c.menuNum AND c.businessNum=d.businessNum AND d.businessNum=#{businessNum} AND a.orderState="접수완료"
 		ORDER BY a.orderTime DESC
 	</select>
 	
+	<update id="orderApproval" parameterType="int">
+		UPDATE orders
+		SET orderState="메뉴완료"
+		WHERE orderNum=#{orderNum}
+	</update>
+	
+	<delete id="orderDetailCancel" parameterType="int">
+		DELETE
+		FROM orderdetail
+		WHERE orderNum=#{orderNum}
+	</delete>
+	<delete id="orderCancel" parameterType="int">
+		DELETE
+		FROM orders
+		WHERE orderNum=#{orderNum}
+	</delete>
 </mapper>

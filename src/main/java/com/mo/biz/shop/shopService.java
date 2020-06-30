@@ -49,6 +49,17 @@ public class shopService {
 		return shopDAO.getQRcode(businessNum);
 	}
 	
+	public int shopOpen(String businessNum) {
+		return shopDAO.shopOpen(businessNum);
+	}
+	
+	public int shopClose(String businessNum) {
+		return shopDAO.shopClose(businessNum);
+	}
+	
+	public shopVO shopState(String businessNum) {
+		return shopDAO.shopState(businessNum);
+	}
 	
 	
 }

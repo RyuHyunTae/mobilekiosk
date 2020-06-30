@@ -27,4 +27,16 @@ public class orderDAO {
 	public List<orderVO> userOrderList(orderListVO vo){
 		return sqlSession.selectList("orderDAO.userOrderList",vo);
 	}
+	
+	public int orderApproval(int orderNum) {
+		return sqlSession.update("orderDAO.orderApproval",orderNum);
+	}
+	
+	public int orderDetailCancel(int orderNum) {
+		return sqlSession.delete("orderDAO.orderDetailCancel",orderNum);
+	}
+	
+	public int orderCancel(int orderNum) {
+		return sqlSession.delete("orderDAO.orderCancel",orderNum);
+	}
 }

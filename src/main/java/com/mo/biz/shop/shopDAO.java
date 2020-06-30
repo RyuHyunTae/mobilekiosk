@@ -48,4 +48,17 @@ public class shopDAO {
 	public shopVO getQRcode(String businessNum) {
 		return sqlSession.selectOne("shopDAO.getQRcode",businessNum);
 	}
+	
+	public int shopOpen(String businessNum) {
+		return sqlSession.update("shopDAO.shopOpen",businessNum);
+	}
+	
+	public int shopClose(String businessNum) {
+		return sqlSession.update("shopDAO.shopClose",businessNum);
+	}
+	
+	public shopVO shopState(String businessNum) {
+		return sqlSession.selectOne("shopDAO.shopState",businessNum);
+	}
+	
 }

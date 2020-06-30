@@ -15,5 +15,5 @@ public class shopVO {
 	String QRcode;
 	String QRpicture;
 	int approval;
-	
+	int shopOpen;
 }

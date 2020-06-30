@@ -11,8 +11,9 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>
-	<table>
+<body style="margin: 50px 300px">
+	<div align="center">
+	<table >
 		<tr>
 			<td>사업자 번호</td>
 			<td><%=approvalDetail.getBusinessNum()%></td>
@@ -40,5 +41,6 @@
 			</tr>
 		</form>
 	</table>
+	</div>
 </body>
 </html>
