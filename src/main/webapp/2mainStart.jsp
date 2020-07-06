@@ -20,7 +20,7 @@
 </head>
 
 <script type="text/javascript">
-	window.setTimeout('window.location.reload()',5000);
+	window.setTimeout('window.location.reload()',2000);
 </script>
 
 <style>

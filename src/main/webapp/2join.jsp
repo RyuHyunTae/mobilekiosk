@@ -15,7 +15,7 @@
 
 <body style="margin: 50px 300px">
 <div align="center">
-	<form action="http://localhost:8080/biz/shop/join.do" method="post">
+	<form action="http://192.168.64.157:8080/biz/shop/join.do" method="post">
 		<table style="font-family: 'Nanum Brush Script', cursive; font-size: 20px;">
 			<tr>
 				<td>사업자 번호</td>
